@@ -1,0 +1,133 @@
+<!--
+ Copyright (c) 2013 Costco, RGS
+ See the file license.txt for copying permission. 
+-->
+
+
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <f:entry title="Name" field="name">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Description" field="description">
+    <f:textbox />
+  </f:entry>
+  <f:entry name="type" title="Parameter Type" field="type">
+    <select name="type">
+        <j:choose>
+            <j:when test="${instance.type eq 'PT_SINGLE_SELECT'}">
+                <option value="PT_SINGLE_SELECT" selected="selected">Single Select</option>
+            </j:when>
+            <j:otherwise>
+    	       <option value="PT_SINGLE_SELECT">Single Select</option>
+    	    </j:otherwise>
+    	</j:choose>
+    	<j:choose>
+    	   <j:when test="${instance.type eq 'PT_MULTI_SELECT'}">       
+    	       <option value="PT_MULTI_SELECT" selected="selected">Multi Select</option>
+    	   </j:when>
+    	   <j:otherwise>
+               <option value="PT_MULTI_SELECT">Multi Select</option>
+           </j:otherwise>    
+    	</j:choose>
+ <!--   	<j:choose>
+    	   <j:when test="${instance.type eq 'PT_RADIO'}">       
+    	       <option value="PT_RADIO" selected="selected">Radio Buttons</option>
+    	   </j:when>
+    	   <j:otherwise>
+               <option value="PT_RADIO">Radio Buttons</option>
+           </j:otherwise>    
+    	</j:choose>   -->
+    	<j:choose>
+    	   <j:when test="${instance.type eq 'PT_CHECKBOX'}">       
+    	       <option value="PT_CHECKBOX" selected="selected">Check Boxes</option>
+    	   </j:when>
+    	   <j:otherwise>
+               <option value="PT_CHECKBOX">Check Boxes</option>
+           </j:otherwise>    
+    	</j:choose>    
+ <!--   	<j:choose>
+    	   <j:when test="${instance.type eq 'PT_TEXTBOX'}">       
+    	       <option value="PT_TEXTBOX" selected="selected">Text Box</option>
+    	   </j:when>
+    	   <j:otherwise>
+               <option value="PT_TEXTBOX">Text Box</option>
+           </j:otherwise>
+    	</j:choose>
+        <j:choose>
+           <j:when test="${instance.type eq 'PT_MULTI_LEVEL_SINGLE_SELECT'}">       
+    	       <option value="PT_MULTI_LEVEL_SINGLE_SELECT" selected="selected">Multi-Level Single Select</option>
+    	   </j:when>
+    	   <j:otherwise>
+               <option value="PT_MULTI_LEVEL_SINGLE_SELECT">Multi-Level Single Select</option>
+           </j:otherwise>
+    	</j:choose>
+        <j:choose>
+           <j:when test="${instance.type eq 'PT_MULTI_LEVEL_MULTI_SELECT'}">       
+    	       <option value="PT_MULTI_LEVEL_MULTI_SELECT" selected="selected">Multi-Level Multi Select</option>
+    	   </j:when>
+    	   <j:otherwise>
+               <option value="PT_MULTI_LEVEL_MULTI_SELECT">Multi-Level Multi Select</option>
+           </j:otherwise>
+    	</j:choose>   -->     	   	  	   
+    </select>
+  </f:entry>
+  <f:entry title="Value" field="value">
+    <f:textbox />
+	</f:entry>
+  <f:entry title="Property File" field="propertyFile">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Property Key" field="propertyKey">
+    <f:textbox />
+	</f:entry>
+  <f:entry title="Default Value" field="defaultValue">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Default Property File" field="defaultPropertyFile">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Default Property Key" field="defaultPropertyKey">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Quote Value" field="quoteValue">
+    <f:checkbox checked="${instance.quoteValue}"/>
+  </f:entry>
+  
+  <f:entry title="Number of Visible Items" field="visibleItemCount">
+    <f:textbox value="${visibleItemCount}"/>
+  </f:entry>
+  
+  <f:entry title="Delimiter" field="multiSelectDelimiter">
+    <f:textbox value="${multiSelectDelimiter}"/>
+  </f:entry>
+
+  <f:entry title="Bind with field" field="bindFieldName">
+    <f:textbox value="${bindFieldName}"/>
+  </f:entry>
+  
+  <f:entry title="Role Based Filter" field="roleBasedFilter">
+    <f:checkbox checked="${instance.roleBasedFilter}"/>
+  </f:entry>
+  
+  <f:entry title="Is SVN" field="svnPath">
+    <f:checkbox checked="${instance.svnPath}"/>
+  </f:entry>
+  
+  <f:entry title="SVN URL" field="svnUrl">
+    <f:textbox value="${instance.svnUrl}"/>
+  </f:entry>
+  
+  <f:entry title="SVN Username" field="svnUserName">
+    <f:textbox value="${instance.svnUserName}"/>
+  </f:entry>
+  
+  <f:entry title="SVN Password" field="svnPassword">
+    <f:password value="${instance.svnPassword}"/>
+  </f:entry>
+  
+  <f:entry title="Project Name" field="projectName">
+    <f:textbox value="${instance.projectName}"/>
+  </f:entry>
+  	
+</j:jelly>

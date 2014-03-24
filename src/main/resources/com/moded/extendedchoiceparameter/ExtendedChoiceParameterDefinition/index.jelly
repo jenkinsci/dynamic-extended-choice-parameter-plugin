@@ -1,0 +1,59 @@
+<!--
+ Copyright (c) 2013 Costco, RGS
+ See the file license.txt for copying permission. 
+-->
+
+
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
+  xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
+  xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
+  <f:entry title="${it.name}" description="${it.description}">
+    <div name="parameter" id="parameter" description="${it.description}">
+      <j:set var="type" value="${it.type}"/>
+      <input type="hidden" name="name" value="${it.name}" />
+        <select name="value" id="${it.name}" onChange="get_data_${it.name}(this.value)">
+          <st:include page="selectContent.jelly"/>
+        </select>
+		<img src="${rootURL}/images/spinner.gif" id="spinnerImg_${it.name}" style="display:none;" />
+	  </div>
+	
+  </f:entry>
+
+<script src="${rootURL}/plugin/moded_extended_choice_parameter/myCustom.js"/>
+  
+  <script>
+		function get_data_${it.name}(str) {
+		src_name=str;
+		bindfieldname="${it.bindFieldName}";
+		var foo = <st:bind value="${it}"/>
+		var file_path="${it.propertyFile}"
+		
+		if (file_path.indexOf("/") != -1)
+		{
+			var home_path=file_path.substring( 0, file_path.lastIndexOf( "/" ) ) + "/";
+		}
+		else
+		{
+			var home_path=file_path.substring( 0, file_path.lastIndexOf( "\\" ) ) + "\\";
+		}
+		var file_tmp_path=home_path + str + ".txt";
+		var file_name=file_tmp_path;
+		var file_key="${it.propertyKey}";
+		response_data=""
+		document.getElementById("spinnerImg_${it.name}").style.display = "";
+		element=get_parent(bindfieldname);
+		
+		var parent_element=element.parentNode;
+		parent_element.childNodes[ parent_element.childNodes.length - 1 ].disabled = true;
+		
+		foo.computeValue(file_name,file_key,src_name, function(t) {
+			response_data = t.responseObject();
+			parent_element.removeChild(parent_element.childNodes[ parent_element.childNodes.length - 1 ]);
+			parent_element.innerHTML = parent_element.innerHTML + response_data;
+			document.getElementById("spinnerImg_${it.name}").style.display = "none";
+					
+		});
+		}
+</script>
+</j:jelly>

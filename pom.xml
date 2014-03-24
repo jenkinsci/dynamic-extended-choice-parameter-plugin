@@ -11,7 +11,7 @@
 
     <groupId>com.moded.extendedchoiceparameter</groupId>
     <artifactId>dynamic_extended_choice_parameter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <packaging>hpi</packaging>
 
@@ -38,16 +38,8 @@
 		<dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>role-strategy</artifactId>
-            <version>2.1.0</version>
-            <type>jar</type>
-            <!-- optional>false</optional-->
-            <!--<scope>compile</scope>-->
+            <version>2.1.0</version>  
         </dependency>
-		<!--<dependency>
-			<groupId>org.tmatesoft.svnkit</groupId>
-			<artifactId>svnkit</artifactId>
-			<version>1.7.10</version>
-		</dependency>-->
 	</dependencies>
 	
 	<repositories>
@@ -63,5 +55,12 @@
 			<url>http://repo.jenkins-ci.org/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<scm>
+    <connection>scm:git:ssh://github.com/jenkinsci/dynamic-extended-choice-parameter-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/dynamic-extended-choice-parameter-plugin.git</developerConnection>
+    <url>https://github.com/jenkinsci/dynamic-extended-choice-parameter-plugin</url>
+  </scm>
+ 
 
 </project>

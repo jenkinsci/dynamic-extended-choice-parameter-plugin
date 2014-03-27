@@ -20,7 +20,7 @@
 	
   </f:entry>
 
-<script src="${rootURL}/plugin/moded_extended_choice_parameter/myCustom.js"/>
+<script src="${rootURL}/plugin/dynamic_extended_choice_parameter/myCustom.js"/>
   
   <script>
 		function get_data_${it.name}(str) {

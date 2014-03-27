@@ -17,6 +17,8 @@
 
     <name>Dynamic Extended Choice Parameter Plug-In</name>
 	
+	<url>http://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Extended+Choice+Parameter+plugin</url>
+	
 	<developers>
 		<developer>
 			<id>rgs</id>

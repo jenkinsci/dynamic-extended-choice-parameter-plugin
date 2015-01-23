@@ -21,18 +21,28 @@
 					
 				var selectlistOptions = [];
 					
-				// Store selectlist options
+				// Store selectlist options in array
 				jQuery('#selectlist_binded option').each(function()
 				{
 					selectlistOptions.push( this.value );
 				});
-			       
+				
 		        // Show only selected choice, hide the rest
 				for (var i = 0; i &lt; selectlistOptions.length; i++) 
-		        {
-			       	selectlistOptions[i] == tdbodyToShow ? jQuery("td.setting-name:contains('"+ selectlistOptions[i] + "')").parent().parent().show()
-			       			: jQuery("td.setting-name:contains('"+ selectlistOptions[i] + "')").parent().parent().hide();			        	
-			       }
+				{
+					if ( selectlistOptions[i] === tdbodyToShow ) 
+					{
+						$("td.setting-name").filter(function() {
+							  return $(this).text() === selectlistOptions[i];
+						}).parent().parent().show();
+					}
+					else
+					{
+						$("td.setting-name").filter(function() {
+							  return $(this).text() === selectlistOptions[i];
+						}).parent().parent().hide();
+					}
+			    }
 			}).change(); // call change function on page load
 		});
 		

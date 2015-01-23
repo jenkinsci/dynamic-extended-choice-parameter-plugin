@@ -9,6 +9,7 @@
   xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
   xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
 
+	// Check if 'Binded Selections' is checked or not, and set it's id 
 	<j:choose>
 		<j:when test="${it.bindedSelect eq true}">
 			<j:set var="selectlist_id" value="selectlist_binded"/>
@@ -50,19 +51,22 @@
 		var file_tmp_path=home_path + str + ".txt";
 		var file_name=file_tmp_path;
 		var file_key="${it.propertyKey}";
-		response_data=""
-		document.getElementById("spinnerImg_${it.name}").style.display = "";
+		response_data="";
+		
+		if (!bindfieldname) { document.getElementById("spinnerImg_${it.name}").style.display = "none"; } // don't show spinner image if 'Bind with Field' is not being used		
+		else { document.getElementById("spinnerImg_${it.name}").style.display = "";	}
+		
 		element=get_parent(bindfieldname);
 		
 		var parent_element=element.parentNode;
 		parent_element.childNodes[ parent_element.childNodes.length - 1 ].disabled = true;
 		
 		foo.computeValue(file_name,file_key,src_name, function(t) {
+			document.getElementById("spinnerImg_${it.name}").style.display = "";
 			response_data = t.responseObject();
 			parent_element.removeChild(parent_element.childNodes[ parent_element.childNodes.length - 1 ]);
 			parent_element.innerHTML = parent_element.innerHTML + response_data;
 			document.getElementById("spinnerImg_${it.name}").style.display = "none";
-					
 		});
 		}
 </script>

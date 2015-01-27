@@ -9,7 +9,7 @@
   xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
   xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
 
-	// Check if 'Binded Selections' is checked or not, and set it's id 
+	<!-- Check if 'Binded Selections' is checked or not, and set it's id --> 
 	<j:choose>
 		<j:when test="${it.bindedSelect eq true}">
 			<j:set var="selectlist_id" value="selectlist_binded"/>

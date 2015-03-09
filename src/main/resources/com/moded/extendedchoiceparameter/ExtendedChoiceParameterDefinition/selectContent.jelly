@@ -8,8 +8,8 @@
   xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
   xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
   
-	<!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>-->
-	<st:adjunct includes="org.kohsuke.stapler.jquery"/>
+	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->	
+	<st:adjunct includes="org.kohsuke.stapler.jquery"/> <!-- requires installation of 'jQuery' plugin on Jenkins -->
 	<script type="text/javascript">
 	
 		jQuery(document).ready(function ($) 

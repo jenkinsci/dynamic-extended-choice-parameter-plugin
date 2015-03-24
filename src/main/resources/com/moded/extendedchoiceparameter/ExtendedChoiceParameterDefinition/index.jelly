@@ -8,11 +8,22 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
   xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
   xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
+
+	<!-- Check if 'Bind Selections' is checked or not, and set it's id --> 
+	<j:choose>
+		<j:when test="${it.bindSelect eq true}">
+			<j:set var="selectlist_id" value="selectlist_bind"/>
+		</j:when>
+		<j:otherwise>
+			<j:set var="selectlist_id" value="${it.name}"/>
+		</j:otherwise>
+	</j:choose>  
+  
   <f:entry title="${it.name}" description="${it.description}">
     <div name="parameter" id="parameter" description="${it.description}">
       <j:set var="type" value="${it.type}"/>
       <input type="hidden" name="name" value="${it.name}" />
-        <select name="value" id="${it.name}" onChange="get_data_${it.name}(this.value)">
+        <select name="value" id="${selectlist_id}" onChange="get_data_${it.name}(this.value)">
           <st:include page="selectContent.jelly"/>
         </select>
 		<img src="${rootURL}/images/spinner.gif" id="spinnerImg_${it.name}" style="display:none;" />
@@ -40,19 +51,22 @@
 		var file_tmp_path=home_path + str + ".txt";
 		var file_name=file_tmp_path;
 		var file_key="${it.propertyKey}";
-		response_data=""
-		document.getElementById("spinnerImg_${it.name}").style.display = "";
+		response_data="";
+		
+		if (!bindfieldname) { document.getElementById("spinnerImg_${it.name}").style.display = "none"; } // don't show spinner image if 'Bind with Field' is not being used		
+		else { document.getElementById("spinnerImg_${it.name}").style.display = "";	}
+		
 		element=get_parent(bindfieldname);
 		
 		var parent_element=element.parentNode;
 		parent_element.childNodes[ parent_element.childNodes.length - 1 ].disabled = true;
 		
 		foo.computeValue(file_name,file_key,src_name, function(t) {
+			document.getElementById("spinnerImg_${it.name}").style.display = "";
 			response_data = t.responseObject();
 			parent_element.removeChild(parent_element.childNodes[ parent_element.childNodes.length - 1 ]);
 			parent_element.innerHTML = parent_element.innerHTML + response_data;
 			document.getElementById("spinnerImg_${it.name}").style.display = "none";
-					
 		});
 		}
 </script>

@@ -153,7 +153,7 @@ public class ExtendedChoiceParameterDefinition extends ParameterDefinition {
 
 	private String value;
 	
-	private boolean bindedSelect;
+	private boolean bindSelect;
 		
 	private String propertyFile;
 
@@ -180,7 +180,7 @@ public class ExtendedChoiceParameterDefinition extends ParameterDefinition {
 	@DataBoundConstructor
 	public ExtendedChoiceParameterDefinition(String name, String type, String value, String propertyFile, String propertyKey, String defaultValue,
 			String defaultPropertyFile, String defaultPropertyKey, boolean quoteValue, int visibleItemCount, String description,
-			String multiSelectDelimiter, String bindFieldName, boolean svnPath, String svnUrl, String svnUserName, String svnPassword, String projectName, boolean bindedSelect, boolean roleBasedFilter) {
+			String multiSelectDelimiter, String bindFieldName, boolean svnPath, String svnUrl, String svnUserName, String svnPassword, String projectName, boolean bindSelect, boolean roleBasedFilter) {
 		super(name, description);
 		this.type = type;
 
@@ -195,7 +195,7 @@ public class ExtendedChoiceParameterDefinition extends ParameterDefinition {
 		this.svnPath = svnPath;
 		this.roleBasedFilter = roleBasedFilter;
 		this.bindFieldName = bindFieldName;
-		this.bindedSelect = bindedSelect;		
+		this.bindSelect = bindSelect;		
 		if(visibleItemCount == 0) {
 			visibleItemCount = 5;
 		}
@@ -391,7 +391,7 @@ public class ExtendedChoiceParameterDefinition extends ParameterDefinition {
 				
 				if (this.type.equals("PT_SINGLE_SELECT"))
 				{
-					result+="<select name=\"value\" id=\"selectlist\" class=\"" + this.bindedSelect + "\">"; // class=\"true\"	
+					result+="<select name=\"value\" id=\"selectlist\" class=\"" + this.bindSelect + "\">"; // class=\"true\"	
 					for (int i = 0; i < list_arr.length; ++i)
 					{
 				
@@ -855,12 +855,12 @@ public class ExtendedChoiceParameterDefinition extends ParameterDefinition {
 		this.quoteValue = quoteValue;
 	}
 	
-	public boolean isBindedSelect() {
-		return bindedSelect;
+	public boolean isBindSelect() {
+		return bindSelect;
 	}
 
-	public void setBindedSelect(boolean bindedSelect) {
-		this.bindedSelect = bindedSelect;
+	public void setBindSelect(boolean bindSelect) {
+		this.bindSelect = bindSelect;
 	}
 
 	public boolean isSvnPath() {

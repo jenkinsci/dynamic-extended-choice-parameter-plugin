@@ -106,8 +106,8 @@
     <f:textbox value="${bindFieldName}"/>
   </f:entry>
   
-  <f:entry title="Binded Selections" field="bindedSelect">
-	<f:checkbox checked="${instance.bindedSelect}"/>
+  <f:entry title="Bind Selections" field="bindSelect">
+	<f:checkbox checked="${instance.bindSelect}"/>
   </f:entry>
   
   <f:entry title="Role Based Filter" field="roleBasedFilter">

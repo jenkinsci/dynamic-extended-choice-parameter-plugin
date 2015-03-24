@@ -14,15 +14,15 @@
 	
 		jQuery(document).ready(function ($) 
 		{
-			// Binded Select option for Single Select
-			jQuery( '#selectlist_binded' ).change( function()
+			// Bind Select option for Single Select
+			jQuery( '#selectlist_bind' ).change( function()
 			{
 				var tdbodyToShow = jQuery(this).val();
 					
 				var selectlistOptions = [];
 					
 				// Store selectlist options in array
-				jQuery('#selectlist_binded option').each(function()
+				jQuery('#selectlist_bind option').each(function()
 				{
 					selectlistOptions.push( this.value );
 				});
